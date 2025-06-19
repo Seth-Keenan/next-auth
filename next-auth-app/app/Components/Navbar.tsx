@@ -1,6 +1,6 @@
 import React from 'react'
 import { LinkButton } from './LinkButton'
-import { signOut } from "next-auth/react";
+import { signOut } from "../../utils/supabase/supabaseClient";
 
 interface NavbarProps {
     isLoggedIn?: boolean,
@@ -25,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
                     <LinkButton href='/pages/about'>About</LinkButton>
                 </div>
                 <div>
-                    <LinkButton onClick={() => signOut({ callbackUrl: "/" })}>Logout</LinkButton>
+                    <LinkButton onClick={() => signOut()}>Logout</LinkButton>
                 </div>
             </div>
         }
