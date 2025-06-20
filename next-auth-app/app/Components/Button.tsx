@@ -6,7 +6,7 @@ interface ButtonProps {
   className?: string
 }
 
-export const Button: React.FC<ButtonProps> = ({ onClick, children, className = '' }) => {
+export const Button: React.FC<ButtonProps> = ({ onClick, children, className }) => {
   
     const baseClass = "px-4 py-2 bg-amber-600 text-white rounded hover:bg-amber-800 transition: duration-200"
   

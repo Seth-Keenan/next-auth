@@ -1,11 +1,11 @@
 'use client';
 
+import { Session } from "@supabase/supabase-js";
+import { useEffect, useState } from "react";
 import { Button } from "./components/Button";
 import { Navbar } from "./components/Navbar";
-
-import { signInWithGithub, signOut, getSession} from "../utils/supabase/supabaseClient"
-import { useEffect, useState } from "react";
-import { Session } from "@supabase/supabase-js";
+import { signOut, getSession} from "../utils/supabase/supabaseClient"
+import { LinkButton } from "./components/LinkButton";
 
 export default function Home() {
   const [session, setSession] = useState<Session | null>(null);
@@ -31,25 +31,10 @@ export default function Home() {
         :
         <>
           <p>You are not logged in.</p>
-          <Button onClick={() => handleLogin("github")}>Log in with GitHub</Button>
+          <LinkButton href='/pages/account/login'>Log in here!</LinkButton>
         </>
       }
       </div>
     </>
   );
-}
-
-async function handleLogin(provider : string) {
-  let data;
-  let error;
-
-  if (provider === "github") {
-    ({data, error} = await signInWithGithub());
-  }
-
-  if (error) {
-    console.log("error: ", error)
-  } else {
-    console.log("data: ", data)
-  }
 }
