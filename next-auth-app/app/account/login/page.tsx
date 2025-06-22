@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from 'react'
-import { Navbar } from '@/app/components/Navbar'
-import { Button } from '@/app/components/Button'
-import { Input } from '@/app/components/Input'
-import { loginManual, signInWithGithub, signInWithGoogle, signupManual } from "../../../../utils/supabase/supabaseClient"
+import { Navbar } from '@/components/Navbar'
+import { Button } from '@/components/Button'
+import { Input } from '@/components/Input'
+import { loginManual, signInWithGithub, signInWithGoogle, signupManual } from "../../../utils/supabase/supabaseClient"
+import { useRouter } from 'next/router';
 
 const Login = () => {
   const [login, setLogin] = useState<boolean>(true)
@@ -45,6 +46,8 @@ const Login = () => {
         } else {
           console.log("data: ", data)
         }
+
+        window.location.replace("/home");
       } else {
         const { data, error } = await signupManual(email, password);
  
@@ -53,6 +56,8 @@ const Login = () => {
         } else {
           console.log("data: ", data)
         }
+
+        window.location.replace("/account/confirmEmail");
       }
     }
   }
@@ -68,6 +73,7 @@ const Login = () => {
     console.log("password: ", password)
     console.log("confpassword: ", confPassword)
 
+    // Validate Email
     if(email) {
       if(!validEmail.test(email)) {
         setErrorMessage("Your email is not valid.")

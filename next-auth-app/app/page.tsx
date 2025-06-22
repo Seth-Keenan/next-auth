@@ -2,10 +2,10 @@
 
 import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import { Button } from "./components/Button";
-import { Navbar } from "./components/Navbar";
-import { signOut, getSession} from "../utils/supabase/supabaseClient"
-import { LinkButton } from "./components/LinkButton";
+import { Button } from "@/components/Button";
+import { Navbar } from "@/components/Navbar";
+import { signOut, getSession} from "@/utils/supabase/supabaseClient"
+import { LinkButton } from "@/components/LinkButton";
 
 export default function Home() {
   const [session, setSession] = useState<Session | null>(null);
@@ -31,7 +31,7 @@ export default function Home() {
         :
         <>
           <p>You are not logged in.</p>
-          <LinkButton href='/pages/account/login'>Log in here!</LinkButton>
+          <LinkButton href='/account/login'>Log in here!</LinkButton>
         </>
       }
       </div>

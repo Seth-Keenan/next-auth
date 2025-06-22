@@ -1,6 +1,6 @@
 import React from 'react'
 import { LinkButton } from './LinkButton'
-import { signOut } from "../../utils/supabase/supabaseClient";
+import { signOut } from "@/utils/supabase/supabaseClient";
 
 interface NavbarProps {
     isLoggedIn?: boolean,
@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, loginPage }) => {
                     </div>
                 :
                     <div>
-                        <LinkButton href='/pages/account/login'>Login</LinkButton>
+                        <LinkButton href='/account/login'>Login</LinkButton>
                     </div>
                 }
             </div>
