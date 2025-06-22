@@ -31,8 +31,10 @@ export async function loginManual(email, password) {
 export async function signupManual(email, password) {
   let { data, error } = await supabase.auth.signUp({
   email: email,
-  password: password
-  })
+  password: password,
+  options: {
+    emailRedirectTo: process.env.NEXTCHAT_HOME
+  }})
 
   return { data, error };
 }
