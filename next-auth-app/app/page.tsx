@@ -13,6 +13,9 @@ export default function Home() {
   // See if client is already logged in
   useEffect(() => {
     getSession().then(({ data }) => { setSession(data.session) })
+    if(session) {
+      window.location.replace("/home");
+    }
   }, []);
 
   return (
